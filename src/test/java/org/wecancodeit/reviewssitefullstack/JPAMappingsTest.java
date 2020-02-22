@@ -91,14 +91,14 @@ public class JPAMappingsTest {
 		Category movies = categoryRepo.save(new Category("Movies"));
 		
 		Review darkKnight = reviewRepo.save(new Review ("The Dark Knight", "Image", "Content", movies));
-		Review pshyco = reviewRepo.save(new Review ("Pshyco", "Image", "Content", movies));
+		Review psycho = reviewRepo.save(new Review ("Pshyco", "Image", "Content", movies));
 		
 		entityManager.flush();
 		entityManager.clear();
 		
 		Collection<Review> reviewsForCategory = reviewRepo.findByCategoriesContains(movies);
 		
-		assertThat(reviewsForCategory, containsInAnyOrder(darkKnight, pshyco));
+		assertThat(reviewsForCategory, containsInAnyOrder(darkKnight, psycho));
 	}
 
 }
