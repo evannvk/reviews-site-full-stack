@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>A List of All Available Categories</title>
+</head>
+<body>
+
+	<header>
+		<h1>A List of All Categories</h1>
+	</header>
+	
+	<main>
+		<div th:each="category: ${categories}">
+			<li>
+			<a th:href="@{/category(id=${category.id})}" th:text="${category.name}"></a>
+			</li>
+		</div>
+		
+	</main>
+
+	<footer>
+		<small>@copy WCCI 2020</small>
+	</footer>
+
+</body>
+</html>

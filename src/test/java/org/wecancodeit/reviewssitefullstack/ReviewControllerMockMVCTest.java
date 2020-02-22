@@ -69,6 +69,6 @@ public class ReviewControllerMockMVCTest {
 	public void shouldPutSingleReviewIntoModel() throws Exception {
 		when(reviewRepo.findById(1L)).thenReturn(Optional.of(reviewOne));
 		
-		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews-headpage", is (reviewOne)));
+		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews-headpage", is(reviewOne)));
 	}
 }

@@ -30,7 +30,7 @@ public class ReviewController {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
-			model.addAttribute("review-headpage", reviewRepo.findAll());
+			model.addAttribute("review-headpage", review.get());
 			return ("review-template");
 		}
 		throw new ReviewNotFoundException();
@@ -38,7 +38,7 @@ public class ReviewController {
 	
 	@GetMapping("/categories")
 	public String findAllCategories(Model model) {
-		model.addAttribute("categories", categoryRepo.findAll());
+		model.addAttribute("categories-headpage", categoryRepo.findAll());
 		return "categories-headpage";
 	}
 	
@@ -47,8 +47,8 @@ public class ReviewController {
 		Optional<Category> category = categoryRepo.findById(id);
 		
 		if(category.isPresent()) {
-			model.addAttribute("categories", categoryRepo.findAll());
-			return("categories");
+			model.addAttribute("categories-headpage", category.get());
+			return("category-template");
 		}
 		throw new CategoryNotFoundException();
 	}
