@@ -7,6 +7,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Optional;
 
 import javax.annotation.Resource;
@@ -71,4 +73,72 @@ public class ReviewControllerMockMVCTest {
 		
 		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews-headpage", is(reviewOne)));
 	}
+	
+	@Test
+	public void shouldRouteToAllReveiws() throws Exception {
+		mvc.perform(get("/reviews")).andExpect(view().name(is("reviews-headpage")));
+	}
+	
+	@Test
+	public void shouldBeOkForAllReviews() throws Exception {
+		mvc.perform(get("/reviews")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldPutAllReviewsIntoModel() throws Exception {
+		Collection<Review> allReviews = Arrays.asList(reviewOne, reviewTwo);
+		when(reviewRepo.findAll()).thenReturn(allReviews);
+		
+		mvc.perform(get("/reviews")).andExpect(model().attribute("reviews-headpage", is(allReviews)));	
+	}
+	
+	@Test
+	public void shouldBeOkForSingleCategory() throws Exception {
+		long testCategoryId = 1;
+		when(categoryRepo.findById(testCategoryId)).thenReturn(Optional.of(categoryOne));
+		mvc.perform(get("/category?id=1")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldRouteToSingleCategory() throws Exception {
+		long testCategoryId = 1;
+		when(categoryRepo.findById(testCategoryId)).thenReturn(Optional.of(categoryOne));
+		mvc.perform(get("/category?id=1")).andExpect(view().name(is("category-template")));
+	}
+	
+	@Test
+	public void shouldNotBeOkForSingleCategory() throws Exception {
+		mvc.perform(get("/category?id=1")).andExpect(status().isNotFound());
+	}
+	
+	@Test
+	public void shouldPutSingleCategoryIntoModel() throws Exception {
+		when(categoryRepo.findById(1L)).thenReturn(Optional.of(categoryOne));
+		
+		mvc.perform(get("/category?id=1")).andExpect(model().attribute("categories-headpage", is(categoryOne)));
+	}
+	
+	@Test
+	public void shouldRouteToAllCategories() throws Exception {
+		mvc.perform(get("/categories")).andExpect(view().name(is("categories-headpage")));
+	}
+	
+	@Test
+	public void shouldBeOkForAllCategories() throws Exception {
+		mvc.perform(get("/categories")).andExpect(status().isOk());
+	}
+	
+	@Test
+	public void shouldPutAllCategoriesIntoModel() throws Exception {
+		Iterable<Category> allCategories = Arrays.asList(categoryOne, categoryTwo);
+		when(categoryRepo.findAll()).thenReturn(allCategories);
+		
+		mvc.perform(get("/categories")).andExpect(model().attribute("categories-headpage", is(allCategories)));
+	}
+	
+	
+	
+	
+	
+	
 }

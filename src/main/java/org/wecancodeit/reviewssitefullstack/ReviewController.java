@@ -30,7 +30,7 @@ public class ReviewController {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
-			model.addAttribute("review-headpage", review.get());
+			model.addAttribute("reviews-headpage", review.get());
 			return ("review-template");
 		}
 		throw new ReviewNotFoundException();

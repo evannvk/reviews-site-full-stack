@@ -10,11 +10,13 @@
 	</header>
 	
 	<main>
+	
 		<div th:each="review: ${reviews}">
 			<li>
 			<a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
 			</li>
 		</div>
+		
 	</main>
 
 	<footer>

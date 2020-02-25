@@ -51,7 +51,7 @@ public class ReviewControllerTest {
 		when(reviewRepo.findById(testReviewId)).thenReturn(Optional.of(reviewOne));
 
 		underTest.findOneReview(testReviewId, model);
-		verify(model).addAttribute("review-headpage", reviewOne);
+		verify(model).addAttribute("reviews-headpage", reviewOne);
 	}
 
 	@Test
