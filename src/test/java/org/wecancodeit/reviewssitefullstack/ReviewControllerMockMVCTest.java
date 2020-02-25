@@ -59,7 +59,7 @@ public class ReviewControllerMockMVCTest {
 	public void shouldRouteToSingleReview() throws Exception {
 		long testReviewId = 1;
 		when(reviewRepo.findById(testReviewId)).thenReturn(Optional.of(reviewOne));
-		mvc.perform(get("/review?id=1")).andExpect(view().name(is("review-template")));
+		mvc.perform(get("/review?id=1")).andExpect(view().name(is("review")));
 	}
 	
 	@Test
@@ -71,12 +71,12 @@ public class ReviewControllerMockMVCTest {
 	public void shouldPutSingleReviewIntoModel() throws Exception {
 		when(reviewRepo.findById(1L)).thenReturn(Optional.of(reviewOne));
 		
-		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews-headpage", is(reviewOne)));
+		mvc.perform(get("/review?id=1")).andExpect(model().attribute("reviews", is(reviewOne)));
 	}
 	
 	@Test
 	public void shouldRouteToAllReveiws() throws Exception {
-		mvc.perform(get("/reviews")).andExpect(view().name(is("reviews-headpage")));
+		mvc.perform(get("/reviews")).andExpect(view().name(is("reviews")));
 	}
 	
 	@Test
@@ -89,7 +89,7 @@ public class ReviewControllerMockMVCTest {
 		Collection<Review> allReviews = Arrays.asList(reviewOne, reviewTwo);
 		when(reviewRepo.findAll()).thenReturn(allReviews);
 		
-		mvc.perform(get("/reviews")).andExpect(model().attribute("reviews-headpage", is(allReviews)));	
+		mvc.perform(get("/reviews")).andExpect(model().attribute("reviews", is(allReviews)));	
 	}
 	
 	@Test
@@ -103,7 +103,7 @@ public class ReviewControllerMockMVCTest {
 	public void shouldRouteToSingleCategory() throws Exception {
 		long testCategoryId = 1;
 		when(categoryRepo.findById(testCategoryId)).thenReturn(Optional.of(categoryOne));
-		mvc.perform(get("/category?id=1")).andExpect(view().name(is("category-template")));
+		mvc.perform(get("/category?id=1")).andExpect(view().name(is("category")));
 	}
 	
 	@Test
@@ -115,12 +115,12 @@ public class ReviewControllerMockMVCTest {
 	public void shouldPutSingleCategoryIntoModel() throws Exception {
 		when(categoryRepo.findById(1L)).thenReturn(Optional.of(categoryOne));
 		
-		mvc.perform(get("/category?id=1")).andExpect(model().attribute("categories-headpage", is(categoryOne)));
+		mvc.perform(get("/category?id=1")).andExpect(model().attribute("categories", is(categoryOne)));
 	}
 	
 	@Test
 	public void shouldRouteToAllCategories() throws Exception {
-		mvc.perform(get("/categories")).andExpect(view().name(is("categories-headpage")));
+		mvc.perform(get("/categories")).andExpect(view().name(is("categories")));
 	}
 	
 	@Test
@@ -133,7 +133,7 @@ public class ReviewControllerMockMVCTest {
 		Iterable<Category> allCategories = Arrays.asList(categoryOne, categoryTwo);
 		when(categoryRepo.findAll()).thenReturn(allCategories);
 		
-		mvc.perform(get("/categories")).andExpect(model().attribute("categories-headpage", is(allCategories)));
+		mvc.perform(get("/categories")).andExpect(model().attribute("categories", is(allCategories)));
 	}
 	
 	

@@ -21,8 +21,8 @@ public class ReviewController {
 
 	@GetMapping("/reviews")
 	public String findAllReviews(Model model) {
-		model.addAttribute("reviews-headpage", reviewRepo.findAll());
-		return "reviews-headpage"; // src/main/resources/templates + template name + .html
+		model.addAttribute("reviews", reviewRepo.findAll());
+		return "reviews"; // src/main/resources/templates + template name + .html
 	}
 
 	@GetMapping("/review")
@@ -30,16 +30,16 @@ public class ReviewController {
 		Optional<Review> review = reviewRepo.findById(id);
 		
 		if(review.isPresent()) {
-			model.addAttribute("reviews-headpage", review.get());
-			return ("review-template");
+			model.addAttribute("reviews", review.get());
+			return ("review");
 		}
 		throw new ReviewNotFoundException();
 	}
 	
 	@GetMapping("/categories")
 	public String findAllCategories(Model model) {
-		model.addAttribute("categories-headpage", categoryRepo.findAll());
-		return "categories-headpage";
+		model.addAttribute("categories", categoryRepo.findAll());
+		return "categories";
 	}
 	
 	@GetMapping("/category")
@@ -47,8 +47,8 @@ public class ReviewController {
 		Optional<Category> category = categoryRepo.findById(id);
 		
 		if(category.isPresent()) {
-			model.addAttribute("categories-headpage", category.get());
-			return("category-template");
+			model.addAttribute("categories", category.get());
+			return("category");
 		}
 		throw new CategoryNotFoundException();
 	}
