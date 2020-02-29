@@ -24,13 +24,13 @@ public class ReviewPopulator implements CommandLineRunner {
 		Category music = new Category("Music");
 		music = categoryRepo.save(music);
 		
-		Review maus = new Review("Maus", "Image", "Content", comics);
+		Review maus = new Review("Maus", "/images/maus.jpeg", "Content", comics);
 		maus = reviewRepo.save(maus);
-		Review eternalSunshine = new Review("Eternal Sunshine of the Spotless Mind", "Image", "Content", movies);
+		Review eternalSunshine = new Review("Eternal Sunshine of the Spotless Mind", "/images/eternal-sunshine.png", "Content", movies);
 		eternalSunshine = reviewRepo.save(eternalSunshine);
-		Review remoDrive = new Review("Greatest Hits by Remo Drive", "Image", "Content", music);
+		Review remoDrive = new Review("Greatest Hits by Remo Drive", "/images/remo-drive.jpg", "Content", music);
 		remoDrive = reviewRepo.save(remoDrive);
-		Review scottPilgrim = new Review("Scott Pilgrim vs. The World", "Image", "Content", comics, movies, music);
+		Review scottPilgrim = new Review("Scott Pilgrim vs. The World", "/images/scott-pilgrim.jpg", "Content", comics, movies, music);
 		scottPilgrim = reviewRepo.save(scottPilgrim);
 	}
 

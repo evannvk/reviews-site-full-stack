@@ -2,21 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>A List of All Available Reviews</title>
+
+	<link href="./reviews-style.css" rel="stylesheet" type="text/css">
 </head>
-<body>
 
 	<header>
 		<h1>A List of All Reviews</h1>
 	</header>
-	
 	<main>
-	
 		<div th:each="review: ${reviews}">
 			<li>
 			<a th:href="@{/review(id=${review.id})}" th:text="${review.title}"></a>
 			</li>
 		</div>
-		
+			<a href="http://localhost:8080/categories"> To Categories</a>
 	</main>
 
 	<footer>
