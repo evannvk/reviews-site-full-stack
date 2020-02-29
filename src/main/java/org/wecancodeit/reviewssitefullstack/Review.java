@@ -19,6 +19,7 @@ public class Review {
 	
 	private String title;
 	private String image;
+	@Lob
 	private String content;
 	
 	@ManyToMany
@@ -38,7 +39,6 @@ public class Review {
 		return image;
 	}
 	
-	@Lob
 	public String getContent() {
 		return content;
 	}
