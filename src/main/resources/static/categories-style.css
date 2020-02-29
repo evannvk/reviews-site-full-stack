@@ -14,6 +14,12 @@ html {
   margin-top: 0.5em;
 }
 
+#reviewsLink {
+  padding: 0.5em;
+  text-align: center;
+  font-size: 20px;
+}
+
 footer {
   margin-top: 2em;
   margin-bottom: 1em;
@@ -21,10 +27,4 @@ footer {
   color: #fff;
   padding: 1em 0;
   text-align: center;
-}
-
-#categoriesLink {
-  padding: 0.5em;
-  text-align: center;
-  font-size: 20px;
 }

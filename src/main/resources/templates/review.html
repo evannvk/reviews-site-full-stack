@@ -1,27 +1,28 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-	<title> A Review </title>
-</head>
-<body>
+  <head>
+    <title>A Review</title>
 
-	<header>
-		<h1> A Single Review</h1>
-	</header>
+    <link href="./review-style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1>A Single Review</h1>
+    </header>
 
-	<main>
-		
-		<div th:each = "review: ${reviews}">
-			<p th:text = "${review.title}"><p/>
-			<img th:src="${review.image}"/>
-			<p th:text="${review.content}"></p>
-			<a href="http://localhost:8080/reviews">Back to Reviews</a>
-		</div>
-	</main>
+    <main>
+      <div th:each="review: ${reviews}">
+        <h2 th:text="${review.title}"></h2>
+        <img th:src="${review.image}" />
+        <p th:text="${review.content}"></p>
+      </div>
+      <section id="reviewsLink">
+        <a href="http://localhost:8080/reviews">Back to Reviews</a>
+      </section>
+    </main>
 
-	<footer>
-		<small>Copyright Evan Novak 2020</small>
-	</footer>
-
-</body>
+    <footer>
+      <small>Copyright Evan Novak 2020</small>
+    </footer>
+  </body>
 </html>

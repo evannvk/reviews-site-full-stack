@@ -47,7 +47,7 @@ public class ReviewController {
 		Optional<Category> category = categoryRepo.findById(id);
 		
 		if(category.isPresent()) {
-			model.addAttribute("categories", category.get());
+			model.addAttribute("category", category.get());
 			return("category");
 		}
 		throw new CategoryNotFoundException();
