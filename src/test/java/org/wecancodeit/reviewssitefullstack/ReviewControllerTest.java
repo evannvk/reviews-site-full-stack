@@ -51,7 +51,7 @@ public class ReviewControllerTest {
 		when(reviewRepo.findById(testReviewId)).thenReturn(Optional.of(reviewOne));
 
 		underTest.findOneReview(testReviewId, model);
-		verify(model).addAttribute("reviews-headpage", reviewOne);
+		verify(model).addAttribute("reviews", reviewOne);
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class ReviewControllerTest {
 		when(reviewRepo.findAll()).thenReturn(allReviews);
 
 		underTest.findAllReviews(model);
-		verify(model).addAttribute("reviews-headpage", allReviews);
+		verify(model).addAttribute("reviews", allReviews);
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class ReviewControllerTest {
 		when(categoryRepo.findById(testCategoryId)).thenReturn(Optional.of(categoryOne));
 
 		underTest.findOneCategory(testCategoryId, model);
-		verify(model).addAttribute("categories-headpage", categoryOne);
+		verify(model).addAttribute("categories", categoryOne);
 	}
 
 	@Test
@@ -78,7 +78,7 @@ public class ReviewControllerTest {
 		when(categoryRepo.findAll()).thenReturn(allCategories);
 
 		underTest.findAllCategories(model);
-		verify(model).addAttribute("categories-headpage", allCategories);
+		verify(model).addAttribute("categories", allCategories);
 	}
 
 }
