@@ -115,7 +115,7 @@ public class ReviewControllerMockMVCTest {
 	public void shouldPutSingleCategoryIntoModel() throws Exception {
 		when(categoryRepo.findById(1L)).thenReturn(Optional.of(categoryOne));
 		
-		mvc.perform(get("/category?id=1")).andExpect(model().attribute("categories", is(categoryOne)));
+		mvc.perform(get("/category?id=1")).andExpect(model().attribute("category", is(categoryOne)));
 	}
 	
 	@Test

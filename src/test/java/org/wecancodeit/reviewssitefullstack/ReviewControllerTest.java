@@ -69,7 +69,7 @@ public class ReviewControllerTest {
 		when(categoryRepo.findById(testCategoryId)).thenReturn(Optional.of(categoryOne));
 
 		underTest.findOneCategory(testCategoryId, model);
-		verify(model).addAttribute("categories", categoryOne);
+		verify(model).addAttribute("category", categoryOne);
 	}
 
 	@Test
